@@ -50,6 +50,7 @@
     [self setProgressCapType:kCGLineCapRound];
     [self setEmptyLineColor:[UIColor lightGrayColor]];
     [self setEmptyLineStrokeColor:[UIColor lightGrayColor]];
+    [self setInnerCircleColor:[UIColor clearColor]];
     [self setFontColor:[UIColor blackColor]];
     [self setEmptyLineWidth:1.f];
     [self setProgressLineWidth:14.f];
@@ -181,6 +182,14 @@
 
 -(UIColor*)emptyLineStrokeColor{
     return self.progressLayer.emptyLineStrokeColor;
+}
+
+-(void)setInnerCircleColor:(UIColor *)innerCircleColor{
+    self.progressLayer.innerCircleColor = innerCircleColor;
+}
+
+-(UIColor*)innerCircleColor{
+    return self.progressLayer.innerCircleColor;
 }
 
 -(void)setProgressAngle:(CGFloat)progressAngle{

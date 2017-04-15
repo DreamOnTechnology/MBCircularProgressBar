@@ -98,6 +98,11 @@
  */
 @property (nonatomic,strong) UIColor    *emptyLineStrokeColor;
 
+/**
+ * The color of the inner circle
+ */
+@property (nonatomic,strong) UIColor    *innerCircleColor;
+
 /*
  * Number of decimal places of the value [0,∞)
  */

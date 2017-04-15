@@ -24,6 +24,7 @@
 @dynamic progressAngle;
 @dynamic emptyLineColor;
 @dynamic emptyLineStrokeColor;
+@dynamic innerCircleColor;
 @dynamic emptyCapType;
 @dynamic progressCapType;
 @dynamic fontColor;
@@ -49,6 +50,7 @@
     UIGraphicsPushContext(context);
     
     CGSize size = CGRectIntegral(CGContextGetClipBoundingBox(context)).size;
+    [self drawInnerCircle:size context:context];
     [self drawEmptyBar:size context:context];
     [self drawProgressBar:size context:context];
   
@@ -57,6 +59,25 @@
     }
     
     UIGraphicsPopContext();
+}
+
+- (void)drawInnerCircle:(CGSize)rectSize context:(CGContextRef)c{
+    CGMutablePathRef arc = CGPathCreateMutable();
+    
+    CGPathAddArc(arc, NULL,
+                 rectSize.width/2, rectSize.height/2,
+                 MIN(rectSize.width,rectSize.height)/2 - self.progressLineWidth,
+                 M_PI-(-2.f+0.5)*M_PI,
+                 -M_PI-(-2.f +0.5)*M_PI,
+                 YES);
+    
+    CGPathRef strokedArc = CGPathCreateCopy(arc);
+    CGContextAddPath(c, strokedArc);
+    
+    CGContextSetFillColorWithColor(c, self.innerCircleColor.CGColor);
+    CGContextDrawPath(c, kCGPathFill);
+    
+    CGPathRelease(arc);
 }
 
 - (void)drawEmptyBar:(CGSize)rectSize context:(CGContextRef)c{

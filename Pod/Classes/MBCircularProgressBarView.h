@@ -121,6 +121,11 @@ IB_DESIGNABLE
 @property (nonatomic,strong) IBInspectable UIColor   *emptyLineStrokeColor;
 
 /**
+ * The color of the inner circle
+ */
+@property (nonatomic,strong) IBInspectable UIColor   *innerCircleColor;
+
+/**
  * The shape of the background bar cap	{kCGLineCapButt=0, kCGLineCapRound=1, kCGLineCapSquare=2} 
  */
 @property (nonatomic,assign) IBInspectable NSInteger emptyCapType;
